@@ -1,0 +1,13 @@
+{
+    "name": "fullstack",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "concurrently --kill-others \"npm run start-server\" \"npm run start-client\"",
+        "start-server": "cd client && npm run start",
+        "start-client": "cd server && npm run dev"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
+    }
+}
