@@ -1,9 +1,11 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 
 app.get("/api", (req, res) => {
     res.json({ 
         "book": "Ruths bog",
+        "abbreviation": "Ruth",
+        "chapter": "1",
         "verses" : [
             "På den tid hvor dommerne virkede var der hungersnød i landet, og en mand fra Betlehem i Juda rejste til Moabs land for at slå sig ned der sammen med sin hustru og deres to sønner.", 
             "Manden hed Elimelek, hans hustru No\'omi, og de to sønner hed Maklon og Kiljon. De var efratiter fra Betlehem i Juda, og de kom til Moab og blev der. ", 
@@ -46,5 +48,5 @@ app.get("/api", (req, res) => {
 });
 
 app.listen(5000, () => {
-    console.log("Sever started on port 5000");
+    console.log("Server started on port 5000");
 });

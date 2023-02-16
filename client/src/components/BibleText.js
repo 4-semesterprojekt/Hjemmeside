@@ -1,50 +1,33 @@
-import React, { useEffect, useState }  from 'react';
+import React from 'react';
 
-function BibleText() {
-    const [backendData, setBackendData] = useState([{}]);
-
-    useEffect(() => {
-    fetch("/api").then(
-        response => response.json()
-    ).then(
-        data => {
-        setBackendData(data);
-        }
-    )
-    }, []);
-
-    let title = (
-    <h1>{backendData.book}</h1>
-    )
-
+const BibleText = ({text}) => {
     let lines = [];
 
-    let verses = backendData.verses;
-    let titles = backendData.titles;
+    let verses = text.verses;
+    let subtitles = text.titles;
 
     if (verses !== undefined) {
     verses.map((verse, i) => {
-        let title = titles.find(({verse}) => 
-        {
-        return verse === "" + (i+1);
-        })
+        let title = subtitles.find(({verse}) => verse === "" + (i+1));
         if (title !== undefined) {
         lines.push({type: "subtitle", text: title.text});
         }
-        lines.push({type: "verse", text: ("v" + (i+1) + " " + verse)}); 
+        lines.push({type: "verse", text: verse}); 
     });
     }
 
-    let text = (
-    (lines === 'undefined') ? (
+    let verseNumber = 0;
+    let bibleText = (
+    (lines.length === 0) ? (
         <p>Loading...</p>
     ) : (
         lines.map((line, i) => {
             switch(line.type) {
             case "subtitle":
-                return (<h2 key={i}>{line.text}</h2>);
+                return (<h4 className='mt-4' key={i}>{line.text}</h4>);
             case "verse":
-                return (<span key={i}>{line.text}</span>);
+                verseNumber++;
+                return (<span key={i}><strong>v{verseNumber}</strong> {line.text} </span>);
             }
         }
         )
@@ -52,8 +35,7 @@ function BibleText() {
     )
 
     return (<>
-      {title}
-      {text}
+      {bibleText}
     </>);
 }
 
