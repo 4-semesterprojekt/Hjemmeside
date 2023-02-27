@@ -1,41 +1,54 @@
+// Libraries
 import React, { useEffect, useState } from 'react'
+
+// Internal components
 import BookDropdown from './components/BookDropdown';
 import BibleText from './components/BibleText';
-import Counter from './components/Counter';
-import FunctionClick from './components/FunctionClick';
 
+import Header from './components/main/Header';
+import Navbar from './components/main/Navbar';
+import Body from './components/main/Body'
+import Footer from './components/main/Footer';
+
+// Bootstrap related
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-
-    useEffect(() => {
-    fetch("/api").then(
-        response => response.json()
+  const [currentBook, setCurrentBook] = useState("ruth");
+  const [currentChapter, setCurrentChapter] = useState(1);
+  const [books, setBooks] = useState([]);
+  const [text, setText] = useState("");
+  
+  useEffect(() => {
+    fetch("/api/denfriebibel?book=" + currentBook + "&chapter=" + currentChapter).then(
+      response => response.json()
     ).then(
-        data => {
-        setBackendData(data);
-        }
-    )
+      data => {setText(data)}
+    );
+  }, [currentBook, currentChapter]);
+  
+  useEffect(() => {
+    fetch("/api/denfriebibel?book=all").then(
+      response => response.json()
+    ).then(
+      data => {
+        setBooks(data.books);
+      }
+    );
   }, []);
 
-  let books = [
-    {
-      name: "Ruths bog",
-      abbreviation: "Ruth",
-      chapters: 4
-    },
-    {
-      name: "Jobs bog",
-      abbreviation: "Job",
-      chapters: 42
-    }
-  ];
-
   return (
-    <div className="col-6 mx-auto px-2">
-      <BookDropdown books={books}/>
-      <BibleText text={backendData}/>
+    <div>
+      <Header>
+        <Navbar/>
+      </Header>
+      <Body>
+        <BookDropdown bookChanged={setCurrentBook} chapterChanged={setCurrentChapter} books={books}/>
+        <BibleText text={text}/>
+      </Body>
+      <Footer>
+        <p>Den frie bibel</p>
+      </Footer>
     </div>
   )
 }

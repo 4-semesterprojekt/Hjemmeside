@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function FunctionClick() {
-    function clickHandler(){
-        console.log('Button clicked');
+class FunctionClick extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            message: 'Hello'
+        };
+
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
-    return (
-        <div>
-            <button onClick={clickHandler}>Click</button>
-        </div>
-    )
+    clickHandler() {
+        this.setState({
+            message: 'Goodbye!'
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                <button onClick={this.clickHandler}>Click</button>
+            </div>
+        )
+    }
 }
 
 export default FunctionClick;
