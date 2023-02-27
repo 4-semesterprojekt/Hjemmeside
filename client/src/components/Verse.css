@@ -1,9 +1,7 @@
 .verseNumber {
-    background-color: #DBCBD8;
-    color: #101935;
+    background-color: #DDD0C8;
 
-    margin: 0px 0px 0px 4px;
-    padding: 0px 5px;
+    padding: 2px 5px;
     border-radius: 5px;
 
     -webkit-user-select: none; /* Safari */
@@ -12,5 +10,9 @@
 }
 
 .verseLine {
-    line-height: 1.5em;
+    line-height: 2em;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    margin: 0rem 0.5rem 0rem 0rem;
 }

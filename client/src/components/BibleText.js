@@ -3,6 +3,7 @@ import React from 'react';
 import Loading from './main/Loading';
 import Error from './main/Error';
 import Verse from './Verse';
+import SectionTitle from './SectionTitle';
 
 function BibleText (props) {
     let lines = [];
@@ -39,12 +40,16 @@ function BibleText (props) {
 
     //https://stackoverflow.com/questions/6582233/hash-in-anchor-tags
     let verseNumber = 0;
+    let sectionNumber = -1;
+    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
     let bibleText = (
         (lines.length !== 0) ? (
             lines.map((line, i) => {
                 switch(line.type) {
                     case "subtitle":
-                        return (<h4 className='mt-4' key={i}>{line.text}</h4>);
+                        sectionNumber++;
+                        return (<SectionTitle key={i} id={alphabet[sectionNumber]}>{line.text}</SectionTitle>);
                     case "error":
                         return (<Error key={i}>{line.text}</Error>);
                     case "verse":

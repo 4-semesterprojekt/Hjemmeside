@@ -4,7 +4,7 @@ function BookDropdown(props) {
     const [books, setBooks] = useState([]);
     const [currentBook, setCurrentBook] = useState({});
     const [currentChapter, setCurrentChapter] = useState(1);
-    const [chapters, setChapters] = useState(4);
+    const [chapters, setChapters] = useState(0);
 
     useEffect(()=>{
         setBooks(props.books);
