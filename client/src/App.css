@@ -1,4 +1,15 @@
 .primary {
-    background-color: #DDD0C8;
-    color: black;
+    background-color: var(--sixty);
+    color: var(--ten);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    min-height: 100vh;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -11,11 +11,21 @@ function BibleText (props) {
     let verses;
     let subtitles;
     let errors;
+    let footnotes;
+    
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
     if (props.text !== undefined) {
         verses = props.text.verses;
         subtitles = props.text.titles;
         errors = props.text.errors;
+        footnotes = props.text.footnotes === undefined ? [] : props.text.footnotes;
+
+        if (footnotes !== undefined) {
+            for (let i = 0; i < footnotes.length; i++) {
+                footnotes[i].designation = alphabet[i];
+            }
+        }
     }
 
     if (verses !== undefined) {
@@ -40,21 +50,25 @@ function BibleText (props) {
 
     //https://stackoverflow.com/questions/6582233/hash-in-anchor-tags
     let verseNumber = 0;
-    let sectionNumber = -1;
-    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
+    
     let bibleText = (
         (lines.length !== 0) ? (
             lines.map((line, i) => {
                 switch(line.type) {
                     case "subtitle":
-                        sectionNumber++;
-                        return (<SectionTitle key={i} id={alphabet[sectionNumber]}>{line.text}</SectionTitle>);
+                        return (<SectionTitle key={i}>{line.text}</SectionTitle>);
                     case "error":
                         return (<Error key={i}>{line.text}</Error>);
                     case "verse":
                         verseNumber++;
-                        return (<Verse key={i} verseNumber={verseNumber}>{line.text}</Verse>);
+                        
+                        let footnotesInVerse = [];
+                        for (let j = 0; j < footnotes.length; j++) {
+                            if (footnotes[j].verse === verseNumber)
+                                footnotesInVerse.push(footnotes[j]);
+                        }
+
+                        return (<Verse key={i} verseNumber={verseNumber} footnotes={footnotesInVerse} text={line.text}/>);
                     default:
                         return (<p>{line.text}</p>)
                 }

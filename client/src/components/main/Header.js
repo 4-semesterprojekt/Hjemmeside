@@ -1,11 +1,10 @@
 import React from 'react'
+import './Header.css'
 
 function Header(props) {
     return (
-        <div className='navbar-light bg-light py-3'>
-            <div className='col-md-6 col-xs-10 mx-auto'>
-                {props.children}
-            </div>
+        <div className='header col-md-5 col-xs-10 mx-auto p-4'>
+            {props.children}
         </div>
     )
 }

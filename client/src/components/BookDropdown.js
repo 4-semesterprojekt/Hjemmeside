@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './BookDropdown.css'
+
 function BookDropdown(props) {
     const [books, setBooks] = useState([]);
     const [currentBook, setCurrentBook] = useState({});
@@ -58,6 +60,11 @@ function BookDropdown(props) {
                         {chapterOptions}
                     </select>
                 </div>
+            </div>
+            <div className='d-flex justify-content-center'>
+                <a className='arrow' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a className='arrow' href='#/' onClick={() => { onChapterChange(currentChapter < currentBook.chapters ? (currentChapter + 1) : currentBook.chapters) }}>→</a>
             </div>
         </div>
     )

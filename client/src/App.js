@@ -13,6 +13,7 @@ import Footer from './components/main/Footer';
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
+import "./Palette.css"
 
 function App() {
   const [currentBook, setCurrentBook] = useState("ruth");
@@ -40,7 +41,7 @@ function App() {
   }, []);
 
   return (
-    <div className='primary'>
+    <div className='primary p-md-4'>
       <Header>
         <Navbar/>
       </Header>
