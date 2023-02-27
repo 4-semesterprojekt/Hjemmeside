@@ -10,8 +10,9 @@ import Navbar from './components/main/Navbar';
 import Body from './components/main/Body'
 import Footer from './components/main/Footer';
 
-// Bootstrap related
+// Styles
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
 
 function App() {
   const [currentBook, setCurrentBook] = useState("ruth");
@@ -20,6 +21,7 @@ function App() {
   const [text, setText] = useState("");
   
   useEffect(() => {
+    setText("");
     fetch("/api/denfriebibel?book=" + currentBook + "&chapter=" + currentChapter).then(
       response => response.json()
     ).then(
@@ -38,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className='primary'>
       <Header>
         <Navbar/>
       </Header>
