@@ -6,6 +6,18 @@
     min-height: 100vh;
 }
 
+.react-tooltip {
+    background-color: black;
+    opacity: 1;
+    max-width: 50vh;
+}
+
+.ignore {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
 .box {
     background-color: var(--thirty);
     box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px;

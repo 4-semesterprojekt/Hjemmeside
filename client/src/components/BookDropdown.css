@@ -1,6 +1,16 @@
+.sticky-top{
+    margin-top:-2rem;
+    padding-top:2rem !important;
+    background-color: var(--thirty);
+}
+
 .arrow-container {
-    display: flex;
     height: 0px;
+}
+
+.transparent-transition {
+    background: rgba(255, 255, 255, 1);
+    height: 20px;
 }
 
 .arrow {
@@ -12,8 +22,6 @@
     font-size: 1.5rem;
     text-decoration: none;
 
-    width: 48px;
-    height: 48px;
     line-height: 42px;
     text-align: center;
 }
@@ -25,11 +33,15 @@
 .arrow-left {
     position: relative;
     left: -144px;
-    top: -48px;
+
+    width: 48px;
+    height: 48px;
 }
 
 .arrow-right {
     position: relative;
-    left: 724px;
-    top: -48px;
+    left: 144px;
+
+    width: 48px;
+    height: 48px;
 }

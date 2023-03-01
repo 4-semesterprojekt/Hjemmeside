@@ -5,18 +5,11 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 
 function Verse(props) {
-    if (props.footnotes.length === 0) {
-        return (
-            <span className='verseLine'>
-                <strong id={props.verseNumber} className='verseNumber ignore'>{props.verseNumber}</strong>
-                &nbsp;{props.text}
-            </span>
-        )
-    }
-    else 
-    {
-        let text = [];
-        let words = props.text.split(' ');
+    let text;
+
+    if (props.footnotes.length > 0) {
+        text = [];
+        const words = props.text.split(' ');
 
         for (let i = 0; i < words.length; i++) {
             text.push((i !== 0 ? " " : "") + words[i]);
@@ -24,8 +17,8 @@ function Verse(props) {
             for (let j = 0; j < props.footnotes.length; j++) {
                 if (props.footnotes[j].word === i + 1)
                 {
-                    let tooltipID = props.verseNumber + "f" + props.footnotes[j].designation;
-                    let footnote = (
+                    const tooltipID = props.verseNumber + "f" + props.footnotes[j].designation;
+                    const footnote = (
                         <span>
                             <Tooltip id={tooltipID}/>
                             <sup key={i} className='ignore'>
@@ -37,14 +30,17 @@ function Verse(props) {
                 }
             }
         }
-        
-        return (
-            <span className='verseLine'>
-                <strong id={props.verseNumber} className='verseNumber ignore'>{props.verseNumber}</strong>
-                &nbsp;{text}
-            </span>
-        )
     }
+    else {
+        text = props.text;
+    }
+    
+    return (
+        <span className='verseLine'>
+            <strong id={props.verseNumber} className='verseNumber ignore'>v{props.verseNumber}</strong>
+            &nbsp;{text}
+        </span>
+    )
 }
 
 export default Verse

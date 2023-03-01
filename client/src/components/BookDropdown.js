@@ -44,26 +44,32 @@ function BookDropdown(props) {
     }
 
     return (
-        <div className="container px-0 mb-4 mx-0">
-            <div className="row">
-                <div className='col-8'>
-                    <select className="form-select form-select-lg" onChange={(e) => { onBookChange(e.target.value) }} name="books" id="books">
-                        {
-                            (Array.isArray(books)) ? (books.map((book, i) => 
-                                <option key={i} value={i}>{book.name}</option>
-                            )) : ""
-                        }
-                    </select>
+        // Sticky top: https://stackoverflow.com/questions/28340054/bootstrap-keep-div-fixed-after-scrolling-to-it
+        <div className='sticky-top'>
+            <div className="container px-0 mx-0">
+                <div className='arrow-container'>
+                    <div className='d-flex justify-content-between'>
+                        <a className='arrow arrow-left ignore' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
+                        <a className='arrow arrow-right ignore' href='#/' onClick={() => { onChapterChange(currentChapter < currentBook.chapters ? (currentChapter + 1) : currentBook.chapters) }}>→</a>
+                    </div>
                 </div>
-                <div className='col-4'>
-                    <select className="form-select form-select-lg" value={currentChapter} onChange={(e) => { onChapterChange(e.target.value) }} name="chapter" id="chapter">
-                        {chapterOptions}
-                    </select>
+                <div className="row">
+                    <div className='col-8'>
+                        <select className="form-select form-select-lg ignore" onChange={(e) => { onBookChange(e.target.value) }} name="books" id="books">
+                            {
+                                (Array.isArray(books)) ? (books.map((book, i) => 
+                                    <option key={i} value={i}>{book.name}</option>
+                                )) : ""
+                            }
+                        </select>
+                    </div>
+                    <div className='col-4'>
+                        <select className="form-select form-select-lg ignore" value={currentChapter} onChange={(e) => { onChapterChange(e.target.value) }} name="chapter" id="chapter">
+                            {chapterOptions}
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div className='arrow-container'>
-                <a className='arrow arrow-left' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
-                <a className='arrow arrow-right' href='#/' onClick={() => { onChapterChange(currentChapter < currentBook.chapters ? (currentChapter + 1) : currentBook.chapters) }}>→</a>
+                <div className='transparent-transition'/>
             </div>
         </div>
     )

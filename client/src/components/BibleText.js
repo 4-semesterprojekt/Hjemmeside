@@ -78,7 +78,7 @@ function BibleText (props) {
     )
     
     return (
-        <div>
+        <div className='py-0'>
             {bibleText === "" ? (
                 <div className='d-flex justify-content-center'>
                     <Loading/>
