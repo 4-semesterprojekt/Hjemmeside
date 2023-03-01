@@ -1,5 +1,35 @@
+.arrow-container {
+    display: flex;
+    height: 0px;
+}
+
 .arrow {
-    font-size: 4rem;
+    background-color: var(--thirty);
+    color: var(--ten);
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px;
+    border-radius: 25px;
+
+    font-size: 1.5rem;
     text-decoration: none;
-    line-height: 3.5rem;
+
+    width: 48px;
+    height: 48px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.arrow:hover {
+    color: var(--ten);
+}
+
+.arrow-left {
+    position: relative;
+    left: -144px;
+    top: -48px;
+}
+
+.arrow-right {
+    position: relative;
+    left: 724px;
+    top: -48px;
 }

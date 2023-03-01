@@ -61,10 +61,9 @@ function BookDropdown(props) {
                     </select>
                 </div>
             </div>
-            <div className='d-flex justify-content-center'>
-                <a className='arrow' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a className='arrow' href='#/' onClick={() => { onChapterChange(currentChapter < currentBook.chapters ? (currentChapter + 1) : currentBook.chapters) }}>→</a>
+            <div className='arrow-container'>
+                <a className='arrow arrow-left' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
+                <a className='arrow arrow-right' href='#/' onClick={() => { onChapterChange(currentChapter < currentBook.chapters ? (currentChapter + 1) : currentBook.chapters) }}>→</a>
             </div>
         </div>
     )

@@ -77,22 +77,20 @@ function BibleText (props) {
         ) : ""
     )
     
-    if (bibleText === "")
-    {
-        return (
-            <div className='d-flex justify-content-center'>
-                <Loading/>
-            </div>
-        )
-    }
-    else
-    {
-        return (
-            <div>
-                {bibleText}
-            </div>
-        );
-    }
+    return (
+        <div>
+            {bibleText === "" ? (
+                <div className='d-flex justify-content-center'>
+                    <Loading/>
+                </div>
+            ) : (
+                <div>
+                    {bibleText}
+                </div>
+            )}
+        </div>
+        
+    )
 }
 
 export default BibleText;
