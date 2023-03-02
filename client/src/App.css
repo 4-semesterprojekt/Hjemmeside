@@ -10,6 +10,8 @@
     background-color: black;
     opacity: 1;
     max-width: 50vh;
+    position: absolute;
+    z-index: 1000000 !important;
 }
 
 .ignore {

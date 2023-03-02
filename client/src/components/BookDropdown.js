@@ -46,7 +46,7 @@ function BookDropdown(props) {
     return (
         // Sticky top: https://stackoverflow.com/questions/28340054/bootstrap-keep-div-fixed-after-scrolling-to-it
         <div className='sticky-top'>
-            <div className="container px-0 mx-0">
+            <div className="container px-0 mx-0 mb-2">
                 <div className='arrow-container'>
                     <div className='d-flex justify-content-between'>
                         <a className='arrow arrow-left ignore' href='#/' onClick={() => { onChapterChange(currentChapter > 1 ? (currentChapter - 1) : 1) }}>←</a>
